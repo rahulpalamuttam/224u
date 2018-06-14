@@ -1,0 +1,27 @@
+def read_data(path = "data/squad", data_type="dev"):
+    data_path = path + "data_{}.json".format(data_type)
+    shared_path = path + "shared_{}.json".format(data_type)
+
+    data_path = os.path.join(data_path)
+    shared_path = os.path.join(shared_path)
+
+    with open(data_path, 'r') as fh:
+        data = json.load(fh)
+    with open(shared_path, 'r') as fh:
+        shared = json.load(fh)
+
+    num_examples = len(next(iter(data.values)))
+    
+        
+    # if data_filter is None:
+    #     valid_idxs = range(num_examples)
+    # else:
+    #     mask = []
+    #     keys = data.keys()
+    #     values = data.values()
+    #     for vals in zip(*values):
+    #         each = {key: val for key, val in zip(keys, vals)}
+    #         mask.append(data_filter(each, shared))
+    #     valid_idxs = [idx for idx in range(len(mask)) if mask[idx]]
+
+    print("Loaded {}/{} examples from {}".format(len(valid_idxs), num_examples, data_type))
